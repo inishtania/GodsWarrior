@@ -30,7 +30,7 @@ In this section, before users input new information, the system checks whether t
 - If the customer's identity card number is already in the system, they will be returned to Menu 2, and the system will notify them that the data already exists.<br />
 - If the customer's identity card number is not yet in the system, they will go through a series of inputs to add new data.<br />
 <br /> 
-In this section, the system is designed to  **✅generate a unique ID✅**  for the company's identification for each customer.
+In this section, the system is designed to  ✅**generate a unique ID**✅  for the company's identification for each customer.
 The unique ID is created based on the year and month of data creation, the month and date of their birth, and the sum of their name's index number position.<br />
 <br />
 After users input all the data, the system displays an overview and asks for confirmation if there are any changes they would like to make. 
