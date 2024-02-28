@@ -59,8 +59,6 @@ def cekData():
                 else:
                     continue
                             
-        
-
 
 def tarik_data_keys_items():
     for i,j in dataNasabah.items():
@@ -87,15 +85,12 @@ def lihatData():
     print(judulTabelNasabah)
     for i in dataNasabah:
         print(f'''{str(dataNasabah[i]['id']).ljust(20)}|{str(dataNasabah[i]['NIK']).ljust(13)}|{dataNasabah[i]['Nama'].ljust(25)}|{dataNasabah[i]['Tanggal Lahir'].ljust(15)}    |{dataNasabah[i]['Alamat'].ljust(30)}|{dataNasabah[i]['Tanggal Buat'].ljust(15)} |{dataNasabah[i]['Dana Nasabah']}\t|{dataNasabah[i]['Status']}''')
-        
 
 def lihatDataNIK():
     if kamarPenemuan==0:
         print('\t\t\t\t\t\t\t  Data tidak ditemukan')
         cekData()
         lihatDataNIK()
-    # elif kamarPenemuan == 8 :
-    #     menuUtama()
     else:
         tarik_data_keys_items()
         print_satu_data()
@@ -116,7 +111,6 @@ def lihatLagiLagi():
         print(salah)
         menu1()
    
-
 #-----------------------------------MENU 01-----------------------------------
 def menu1():
     print('''\t\t\t\t\t\t\t  Database Nasabah :
@@ -235,21 +229,9 @@ def kolom ():
     gantiKolom(kolom_input)
 
 
-def gantiTanggal():
-    import re
-    date_pattern = re.compile(r'^\d{2}-\d{2}-\d{4}$')
-    while True :
-        inputTanggalLahir = input("Masukkan tanggal lahir nasabah (dd-mm-yyyy):")
-        if not date_pattern.match(inputTanggalLahir):
-            print("Format tanggal salah. Pastikan Anda memasukkan tanggal dalam format dd-mm-yyyy.")
-            continue
-        else:
-            dict_baru[10]['Tanggal Lahir']= inputTanggalLahir
-            break
-
 def gantiKolom (kolom):
     if kolom == 'Tanggal Lahir':
-        gantiTanggal()
+        idNasabahGenerator()
     elif kolom in dict_baru[10]:
         if isinstance(dict_baru[10][kolom], str):
             value = input('Masukkan data yang benar: ')
@@ -289,8 +271,6 @@ def tambahData():
         except ValueError:
             print("Dana harus berupa bilangan bulat.")
     dict_baru[10]['Dana Nasabah'] = tambahDana
-    # tambahDana = int(input("Masukkan total dana awal Nasabah : "))
-    # dict_baru[10]['Dana Nasabah']=tambahDana
     while True :
         tambahStatus = input("Apakah nasabah prioritas atau tidak?(P/T) :")
         if tambahStatus.lower() == 'p' :
@@ -565,8 +545,6 @@ aksesPosisi= {
     'Data Team' : [1,2,3,5,6]
 }
 
-
-
 def authenticate(username,password):
         if username in dataKaryawan and dataKaryawan[username]['password'] == password:
             return True, dataKaryawan[username]['position']
@@ -634,69 +612,3 @@ while True:
 
 
 
-
-
-#=================================================================AREA TIDAK TERPAKAI========================================================================
-# dataNasabah ={
-#     {'id': 2402100700061,'NIK':3678910,'Nama': 'Intania','Tanggal Lahir': '10-07-1992','Tanggal Buat':'19-02-2024','Dana Nasabah':1000000000},
-#     {'id':2310120800139,'NIK':3798007,'Nama': 'Nur Komala Saijah','Tanggal Lahir': '12-08-1986','Tanggal Buat':'10-10-2023','Dana Nasabah':1500000000},
-#     {'id':2109080400147,'NIK':1800759,'Nama': 'Haris Purwadhana','Tanggal Lahir': '08-04-1994','Tanggal Buat':'09-12-2021','Dana Nasabah':750000000},
-#     {'id':2008010500087,'NIK':9007966,'Nama': 'Angel Kumala','Tanggal Lahir': '01-05-1992','Tanggal Buat':'08-08-2020','Dana Nasabah':925000000}
-#     }
-      
-# def merubahData():
-#     print(dataNasabah[hasilData][kamar_y]) 
-#     if type(dataNasabah[hasilData][kamar_y])== int:
-#         ubahDataInteger = int(input("Masukkan data yang ingin anda ubah : "))
-#         #-----------------MEMASTIKAN SUDAH BENAR-------------------------
-#         dataNasabah[hasilData][kamar_y] = ubahDataInteger
-#         print_satu_data()
-#         tanyaDulu = input("Berikut data yang ingin anda ubah. Apakah sudah benar? (Y/T):")
-#         if tanyaDulu == 'Y':
-#             print('Data sudah berhasil dirubah!')
-#             lihatData()
-#         else :
-#             dataNasabah[hasilData][kamar_y] = dataNasabah[hasilData][kamar_y] #!!!TUJUANNYA UNTUK MENGEMBALIKAN DATA LAMA,jadi gak dirubah dulu
-#             print(dataNasabah[hasilData][kamar_y]) 
-#             cariKolomDanKodeDict()
-#     elif type(dataNasabah[hasilData][kamar_y]) == str:
-#         ubahDataString= input("Masukkan data yang ingin anda ubah : ")
-#         dataNasabah[hasilData][kamar_y] = ubahDataString
-#     print('Data anda sudah berhasil diubah')     
-
-# keys_dict_baru = 0
-
-# def ubah_key_dict_baru ():
-#     for i in dict_baru.keys():
-#         global keys_dict_baru
-#         keys_dict_baru = i
-
-# def change_dict_baru_key(d, keys_dict_baru, new_key, default_value=None):
-#     d[new_key] = d.pop(keys_dict_baru, default_value)
-
-# def change_dict_baru_value(d, keys_dict_baru):
-#     d[keys_dict_baru] = dataNasabah[hasilData]
-
-# ubah_key_dict_baru()
-# change_dict_baru_key(dict_baru,keys_dict_baru,hasilData)
-# dict_baru[keys_dict_baru]= dataNasabah[hasilData]
-# print(dict_baru)
-        
-# menuUtama()
-# while True:
-#     angkaUtama = int(input("Masukkan angka : "))
-#     if angkaUtama == 1 :
-#         menu1()
-#     elif angkaUtama == 2 :
-#         menu2()
-#     elif angkaUtama == 3:
-#         menu3()
-#     elif angkaUtama == 4:
-#         menu4()
-#     elif angkaUtama == 5:
-#         menu5()
-#     elif angkaUtama == 6 :
-#         print('Anda telah keluar dari sistem database')
-#         break
-#     else : 
-#         print('Anda memasukkan angka yang salah : ')
